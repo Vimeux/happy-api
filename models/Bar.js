@@ -115,6 +115,6 @@ const BarSchema = Schema({
       }
     }
   }
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model('Bar', BarSchema)
