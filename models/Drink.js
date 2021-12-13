@@ -20,6 +20,11 @@ const DrinkSchema = Schema({
   happyPrice: {
     type: Number,
     required: true
+  },
+  bar: {
+    type: Schema.Types.ObjectId,
+    ref: 'Bar',
+    required: true
   }
 }, { timestamps: true })
 
