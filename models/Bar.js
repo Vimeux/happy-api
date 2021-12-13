@@ -15,106 +15,24 @@ const BarSchema = Schema({
     type: String,
     required: true
   },
-  schedules: {
-    monday: {
-      start: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      },
-      end: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      }
+  schedules: [{
+    day: {
+      type: String,
+      enum: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
     },
-    tuesday: {
+    periods: {
       start: {
         type: Number,
         min: 0,
-        max: 23,
-        required: true
+        max: 23
       },
       end: {
         type: Number,
         min: 0,
-        max: 23,
-        required: true
-      }
-    },
-    wednesday: {
-      start: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      },
-      end: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      }
-    },
-    thursday: {
-      start: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      },
-      end: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      }
-    },
-    friday: {
-      start: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      },
-      end: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      }
-    },
-    saturday: {
-      start: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      },
-      end: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      }
-    },
-    sunday: {
-      start: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
-      },
-      end: {
-        type: Number,
-        min: 0,
-        max: 23,
-        required: true
+        max: 23
       }
     }
-  }
+  }]
 }, { timestamps: true })
 
 module.exports = mongoose.model('Bar', BarSchema)
