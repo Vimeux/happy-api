@@ -9,7 +9,7 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // analyse les données entrante dans l'api, voir la doc express
 
-// const router = express.Router()
+const router = express.Router()
 
 const port = process.env.PORT
 
@@ -31,6 +31,9 @@ db.once('open', () => {
 app.get('/', (req, res) => {
   res.send('Hello World !')
 })
+
+app.use(router)
+app.use('/bars', require('./routes/bars'))
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

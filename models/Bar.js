@@ -20,17 +20,15 @@ const BarSchema = Schema({
       type: String,
       enum: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
     },
-    periods: {
-      start: {
-        type: Number,
-        min: 0,
-        max: 23
-      },
-      end: {
-        type: Number,
-        min: 0,
-        max: 23
-      }
+    start: {
+      type: Number,
+      min: 0,
+      max: 23
+    },
+    end: {
+      type: Number,
+      min: 0,
+      max: 23
     }
   }],
   happyHours: [{
@@ -38,17 +36,15 @@ const BarSchema = Schema({
       type: String,
       enum: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
     },
-    periods: {
-      start: {
-        type: Number,
-        min: 0,
-        max: 23
-      },
-      end: {
-        type: Number,
-        min: 0,
-        max: 23
-      }
+    start: {
+      type: Number,
+      min: 0,
+      max: 23
+    },
+    end: {
+      type: Number,
+      min: 0,
+      max: 23
     }
   }],
   drink: [{
