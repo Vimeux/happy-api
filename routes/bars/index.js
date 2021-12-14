@@ -8,7 +8,7 @@ router.route('/') // correspond à /bar
     // récupéré la liste des bar depuis mongoDB
     Bar.find((error, result) => {
       if (error) {
-        return res.status(500).send('Erreur lors de la récupération des bars')
+        return res.status(500).send('error during recovery')
       } else {
         // on retourne la liste des bars
         return res.send(result)
@@ -20,16 +20,12 @@ router.route('/') // correspond à /bar
     const { body } = req
     const { name, address, phone, schedules, happyHours, drink } = body
 
-    if (!name) return res.status(500).send('Name is missing')
-    if (!address) return res.status(500).send('Address is missing')
-    if (!phone) return res.status(500).send('Phone is missing')
-    if (!schedules) return res.status(500).send('Phone is missing')
-    if (!happyHours) return res.status(500).send('Phone is missing')
+    if (!name || !address || !phone || !schedules || !happyHours) return res.status(500).send('Missing datas')
 
     const bar = new Bar({
-      name: name,
-      address: address,
-      phone: phone,
+      name,
+      address,
+      phone,
       schedules,
       happyHours,
       drink
@@ -42,7 +38,7 @@ router.route('/') // correspond à /bar
       // on récupère les bars pour les affichés
       Bar.find((error, result) => {
         if (error) {
-          return res.status(500).send('Erreur lors de la récupération des bar')
+          return res.status(500).send('error during recovery')
         } else {
           return res.send(result)
         }
@@ -61,7 +57,7 @@ router.route('/') // correspond à /bar
       if (error) res.status(500).send(error)
       Bar.find((error, result) => {
         if (error) {
-          return res.status(500).send('Erreur lors de la récupération des bar')
+          return res.status(500).send('error during recovery')
         } else {
           return res.send(result)
         }
@@ -82,7 +78,7 @@ router.route('/') // correspond à /bar
     // on trouve le resto et on le met à jour
     Bar.findByIdAndUpdate(id, bar, (error, result) => {
       if (error) {
-        return res.status(500).send('Erreur lors de la récupération des bars')
+        return res.status(500).send('error during recovery')
       } else {
         return res.send(result)
       }
