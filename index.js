@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 
 app.use(router)
 app.use('/bars', require('./routes/bars'))
+app.use('/drinks', require('./routes/drinks'))
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
