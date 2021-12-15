@@ -2,10 +2,17 @@ require('dotenv').config() // sert pour récupérer les données d'un fichier .e
 
 const express = require('express')
 const mongoose = require('mongoose')
-// const cors = require('cors')
+const cors = require('cors')
+
+const loggerMiddleware = require('./middlewares/logger')
 
 const app = express()
 
+// autorise les requetes depuis le front react(access control allow origin)
+app.use(cors())
+// on dit a express d'utiliser le middleware
+app.use(loggerMiddleware)
+// Initialisation de Express pour utiliser le body des requêtes au format UrlEncoded et JSON
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // analyse les données entrante dans l'api, voir la doc express
 
@@ -35,6 +42,8 @@ app.get('/', (req, res) => {
 app.use(router)
 app.use('/bars', require('./routes/bars'))
 app.use('/drinks', require('./routes/drinks'))
+app.use('/auth', require('./routes/users/auth'))
+app.use('/me', require('./routes/users'))
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
