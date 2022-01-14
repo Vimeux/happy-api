@@ -20,7 +20,7 @@ router.route('/') // correspond à /bar
     const { body } = req
     const { name, address, phone, schedules, happyHours, drink } = body
 
-    if (!name || !address || !phone || !schedules || !happyHours) return res.status(500).send('Missing datas')
+    if (!name || !address || !phone) return res.status(500).send('Missing datas')
 
     const bar = new Bar({
       name,
