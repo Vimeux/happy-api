@@ -48,8 +48,9 @@ router.route('/') // correspond à /bar
   // DELETE
   .delete((req, res) => {
     // récupère l'id de l'élément à supprimé
-    const { body } = req
-    const { id } = body
+    const id = req.query.id
+    // const { body } = req
+    // const { id } = body
 
     if (!id) return res.status(500).send('id is missing')
 
