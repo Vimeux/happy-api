@@ -22,6 +22,8 @@ router.route('/') // correspond à /bar
 
     if (!name || !address || !phone) return res.status(500).send('Missing datas')
 
+    console.log(body)
+
     const bar = new Bar({
       name,
       address,
@@ -34,7 +36,10 @@ router.route('/') // correspond à /bar
     // enregistrement du bar
     bar.save((error, result) => {
       //
-      if (error) res.status(500).send(error)
+      if (error) {
+        console.error(error)
+        return res.status(500).send(error)
+      }
       // on récupère les bars pour les affichés
       Bar.find((error, result) => {
         if (error) {
